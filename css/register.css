@@ -1,0 +1,80 @@
+@charset "UTF-8";
+@charset "UTF-8";
+/* 复用登录样式基础 */
+.auth-container {
+    background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    width: 350px;
+}
+
+/* 新增注册特定样式 */
+.auth-title {
+    color: #333;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    position: relative;
+}
+
+.auth-title::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #4CAF50;
+    margin: 0.8rem auto 0;
+    border-radius: 2px;
+}
+
+.auth-input-group {
+    margin-bottom: 1.2rem;
+    position: relative;
+}
+
+.auth-input label {
+    color: #666;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.auth-input input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease;
+}
+
+.auth-input input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.password-strength {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.3rem;
+    display: none;
+}
+ .auth-submit {
+            background: #4CAF50;
+            color: white;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }

@@ -1,0 +1,628 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+}
+
+/* 顶部导航 */
+.main-nav {
+    background: rgba(255,255,255,0.96);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 12px 5%;
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app-title {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    letter-spacing: 1px;
+}
+
+/* 签到功能 */
+/* styles.css 新增 */
+.bamboo-checkin {
+    position: relative;
+    background: rgba(155,187,166,0.15);
+    border: none;
+    border-radius: 24px;
+    padding: 8px 20px 8px 40px;
+    color: #4F8699;
+    font: 500 14px/1.5 'STKaiti';
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* 竹节造型 */
+.bamboo-stalk {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    width: 2px;
+    height: 24px;
+    background: repeating-linear-gradient(
+        to bottom,
+        #4F8699,
+        #4F8699 4px,
+        transparent 5px,
+        transparent 8px
+    );
+    transform: translateY(-50%);
+}
+
+/* 动态竹叶 */
+.icon-bamboo-leaf {
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    width: 24px;
+    height: 24px;
+    background: 
+        linear-gradient(45deg, 
+            transparent 46%,
+            #4F8699 47% 53%,
+            transparent 54%
+        );
+    transform: translateY(-50%) rotate(30deg);
+    transition: transform 0.3s;
+}
+
+.bamboo-checkin:hover {
+    background: rgba(79,134,153,0.1);
+    transform: scale(1.08);
+}
+
+.bamboo-checkin:hover .icon-bamboo-leaf {
+    transform: translateY(-50%) rotate(25deg) scale(1.2);
+    filter: drop-shadow(0 2px 4px rgba(79,134,153,0.2));
+}
+/* 添加签到动效 */
+@keyframes leafFloat {
+    0% { transform: translateY(0) rotate(25deg) }
+    50% { transform: translateY(-80%) rotate(-15deg) }
+    100% { opacity: 0 }
+}
+
+.checking-in .icon-bamboo-leaf {
+    animation: leafFloat 0.6s forwards;
+}
+/* 日期卡片 */
+/* 日期背景 */
+/* 日期容器添加定位基准 */
+.date-content {
+    position: relative;
+    height: 100%;
+    padding: 40px; /* 匹配卡片内边距 */
+}
+/* 优化背景板实现 */
+.date-backdrop {
+    position: absolute;
+    bottom: 190px;     /* 垂直定位修正 */
+    left: -30px;       /* 水平定位修正 */
+    width: 280px;      /* 扩展背景宽度 */
+    height: 160px;     /* 增加背景高度 */
+    background: rgba(255,255,255,0.4); /* 提高透明度 */
+    backdrop-filter: blur(16px); /* 增强模糊效果 */
+    border-radius: 24px;
+    z-index: 0;
+    box-shadow: 
+        0 12px 40px rgba(79,134,153,0.2),
+        inset 0 0 24px rgba(255,255,255,0.4);
+}
+
+/* 动态光影效果 */
+.date-backdrop::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        145deg, 
+        rgba(255,255,255,0.40595),
+    );
+    pointer-events: none;
+}
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .date-backdrop {
+        width: 240px;
+        left: -20px;
+        backdrop-filter: blur(12px);
+    }
+}
+.date-card {
+    position: relative;
+    height: 400px;
+    border-radius: 25px;
+    margin: 30px 0;
+    padding: 40px;
+    overflow: hidden; /* 防止背景超出边框 */
+  
+}
+
+
+
+/* 确保日期内容层级 */
+
+
+.date-display {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+     color: #2c3e50;
+    text-shadow: 
+        0 2px 4px rgba(0,0,0,0.08),
+        0 1px 0 rgba(255,255,255,0.3);
+}
+
+
+.date-day {
+    font-size: 5.0rem;
+    font-weight: 200;
+    line-height: 1;
+    color: #2c3e50; /* 深色文字 */
+}
+
+.date-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.date-week {
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+.date-year {
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+/* 调整文字阴影增强可读性 */
+.poetic-container {
+    text-shadow: 
+        0 2px 4px rgba(0,0,0,0.12),
+        0 0 8px rgba(255,255,255,0.3);
+}
+/* 新增样式 */
+.bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* 背景层 */
+}
+
+.bg-container > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.8s ease;
+}
+
+.bg-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, rgba(44,62,80,0.6) 30%, rgba(52,152,219,0.3));
+}
+
+/* 名言浮层 */
+.quote-overlay {
+    position: absolute;
+    bottom: -30px;
+    right: 0px;
+    background: rgba(255,255,255,0.4);
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    width: 320px;
+    backdrop-filter: blur(5px);
+    transition: all 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.18); /* 弹性过渡曲线 */
+    transition: opacity 0.5s, transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.18);/* 保持原有样式基础上增加过渡 */
+    transform-origin: 90% 110%; /* 基于右下角基点缩放 */
+    will-change: transform; /* 启用GPU加速 */
+}
+
+.quote-overlay:hover {
+    transform: scale(1.15) translateY(-10px); /* 放大+上移 */
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15); /* 加深阴影 */
+    z-index: 10; /* 确保悬浮在最上层 */
+    cursor: pointer; /* 显示点击态光标 */
+}
+
+
+.quote-text {
+    font-size: 1.3rem;
+    color: #2c3e50;
+    margin-bottom: 10px; /* 增加作者间距 */
+    line-height: 1.6;
+}
+
+.quote-author {
+    text-align: right;
+    color: #2c3e50;
+    font-size: 1rem;
+    margin-top: 10px;
+    letter-spacing: 0.5px; /* 增加字间距 */
+}
+
+/* 互动面板 */
+.interaction-panel {
+    background: white;
+    border-radius: 20px;
+    padding: 15px 20px;
+    margin: 50px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.reading-time {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: left center;
+}
+
+.reading-time:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 3px 6px rgba(79,134,153,0.15));
+}
+
+.reading-time::after {
+    content: '';
+    position: absolute;
+    left: -8px;
+    right: -8px;
+    top: -4px;
+    bottom: -4px;
+    background: rgba(136,176,75,0.1);
+    border-radius: 24px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.reading-time:hover::after {
+    opacity: 1;
+}
+
+.icon-clock {
+    transition: transform 0.3s;
+}
+
+.reading-time:hover .icon-clock {
+    transform: rotate(8deg) scale(1.2);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.icon-btn {
+    background: none;
+    border: 1px solid #eee;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s;
+}
+
+.icon-btn:hover {
+    border-color: #3498db;
+    background: #f8fafd;
+}
+
+/* 底部导航 */
+.bottom-nav {
+    position: fixed;
+    height: 90px; /* 明确设定导航高度 */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,0.98);
+    box-shadow: 0 -4px 15px rgba(136,176,75,0.1); /* 匹配竹叶颜色 */
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-around;
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+}
+
+.content-container {
+    padding-bottom: 60px; /* 为底部导航预留竹节高度 */
+    min-height: calc(100vh - 120px); /* 确保内容区最小高度 */
+}
+
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-icon {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 4px;
+    border-radius: 50%;  /* 圆形如竹节横截面 */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* 新增竹影效果 */
+    box-shadow: 0 2px 6px rgba(79,134,153,0.15);
+    background: linear-gradient(
+        145deg, 
+        rgba(136,176,75,0.1) 20%,
+        rgba(255,255,255,0.95) 80%
+    );
+}
+.nav-icon img {
+    width: 20px;  /* 保留呼吸间距 */
+    height: 20px;
+    margin: 5px;  /* 居中定位 */
+    object-fit: contain;
+}
+.nav-label {
+    font-size: 16px;                  /* 与图像中的文字比例协调 */
+    letter-spacing: 0.8px;           /* 增加字间距提升呼吸感 */
+    margin-top: 4px;                 /* 匹配图标间距比例 */
+    font-family: 'Helvetica Neue', -apple-system, sans-serif;
+    color: #718096;                  /* 默认灰蓝色 */
+    font-weight: 500;                /* 中等字重保持优雅 */
+    transition: all 0.3s ease;       /* 平滑过渡效果 */
+    text-shadow: 0 1px 1px rgba(79,134,153,0.1); /* 竹影微投影 */
+}
+
+/* 激活状态（匹配图像中的浅蓝绿底色） */
+.nav-item.active .nav-label {
+    color: #4F8699;                  /* 深竹青色 */
+    font-weight: 600;                /* 加粗突出 */
+    text-shadow: 0 2px 4px rgba(79,134,153,0.15);
+}
+
+/* 悬停状态（模拟竹叶飘动效果） */
+.nav-item:hover .nav-label {
+    color: #3A6575;                 /* 深色蓝绿 */
+    transform: translateY(-1px);    /* 微抬效果 */
+}
+
+/* 激活状态 */
+.nav-item.active {
+    background: rgba(79,134,153,0.1); /* #4F8699 透明度10% */
+}
+
+.nav-item.active .nav-icon {
+    filter: brightness(0) saturate(100%) invert(44%) sepia(15%) saturate(937%) hue-rotate(142deg) brightness(89%) contrast(87%);
+}
+
+.nav-item.active .nav-label {
+    color: #4F8699; /* 匹配图像日期颜色 */
+}
+
+/* 悬停效果 */
+.nav-item:hover {
+    transform: translateY(-3px);
+}
+
+.nav-item:hover .nav-icon {
+    transform: scale(1.15);
+}
+
+/* 延展阅读样式 */
+/* main-style.css */
+.extension-reading {
+    background: 
+        linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)),  /* 半透明白色遮罩 */
+        url(../images/yuedu.png) center/cover no-repeat;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(79,134,153,0.1); /* 竹影微投影 */
+    padding: 24px;
+    backdrop-filter: blur(2px); /* 磨砂玻璃效果 */
+    position: relative; /* 添加相对定位 */
+    overflow: hidden; /* 限制放大效果的影响范围 */
+    z-index: 1; /* 确保在导航栏之下 */
+}
+.section-title {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.reading-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.reading-list li {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; /* 添加过渡效果 */
+    transform-origin: center center; /* 控制放大中心点 */
+}
+
+.reading-list li:last-child {
+    border-bottom: none;
+}
+
+/* 添加悬停效果：向右上方移动并放大 */
+.reading-list li:hover {
+    transform: translate(5px, -5px) scale(1.03);
+}
+
+.icon-book {
+    margin-right: 10px;
+    color: #4a90e2;
+}
+
+.read-link {
+    margin-left: auto;
+    color: #4a90e2;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.read-link:hover {
+    text-decoration: underline;
+}
+
+/* 诗意日期样式 */
+/* 在main-style.css中添加 */
+
+
+/* 清晨模式(6-9点) */
+@media (prefers-color-scheme: light) {
+  .date-card .poetic-day { color: #d46b62; } /* 朝霞红 */
+}
+
+/* 正午模式(10-15点) */
+@media (prefers-color-scheme: no-preference) {
+  .date-card { filter: sepia(0.3); } /* 叠加复古滤镜 */
+}
+
+/* 暮色模式(16点后) */
+@media (prefers-color-scheme: dark) {
+  .date-card .poetic-day { 
+    color:rgba(254,76,64,0.7); /* 烛光色 */
+  }
+}
+
+
+/* 新增样式 进度条*/
+.progress-ink {
+    position: relative;
+    width: 180px;
+    height: 24px;
+    background: #f4f0e3;
+    border-radius: 12px;
+    box-shadow: inset 0 2px 4px rgba(79,134,153,0.1);
+    overflow: hidden;
+}
+
+
+/* 竹韵进度条样式 */
+.bamboo-progress {
+    position: relative;
+    flex: 1;
+    height: 38px;
+    margin-left: 30px;
+    background: 
+        linear-gradient(15deg, #f4f0e3 30%, #fff8ee),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 18px,
+            #9BBBA6 19px,
+            #9BBBA6 20px
+        );
+    border-radius: 19px;
+    box-shadow: 
+        inset 0 4px 12px rgba(155,187,166,0.15),
+        0 2px 8px rgba(79,134,153,0.1);
+    overflow: hidden;
+}
+
+/* 竹节纹理 */
+.bamboo-stem {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: repeating-linear-gradient(
+        to right,
+        transparent 0px,
+        transparent 18px,
+        rgba(79,134,153,0.15) 19px,
+        rgba(79,134,153,0.15) 20px
+    );
+    z-index: 1;
+}
+
+/* 墨流效果 */
+.ink-flow {
+    position: relative;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        #6A8B7B 20%,
+        #8FAB9D
+    );
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 0 100%);
+    transition: width 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* 漂浮竹叶 */
+.floating-leaves {
+    position: absolute;
+    right: -40px;
+    top: 20%;
+    width: 120px;
+    height: 60px;
+    background: 
+        linear-gradient(45deg, 
+            transparent 48%, 
+            #4F8699 49% 51%, 
+            transparent 52%
+        ),
+        linear-gradient(-45deg, 
+            transparent 48%, 
+            #4F8699 49% 51%, 
+            transparent 52%
+        );
+    animation: leafFloat 3s infinite linear;
+}
+
+@keyframes leafFloat {
+    0% { 
+        transform: translateX(0) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% { 
+        transform: translateX(-200%) rotate(720deg);
+        opacity: 0.2;
+    }
+}
+
+/* 文言文指示 */
+.poetic-indicator {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8080c0;
+    font: 500 20px/1 'STKaiti', serif;
+    text-shadow: 
+        0 2px 4px rgba(79,134,153,0.3),
+        0 0 6px rgba(255,255,255,0.2);
+    writing-mode: vertical-rl;
+    letter-spacing: 3px;
+}
+
+

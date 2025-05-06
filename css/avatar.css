@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/* 头像容器样式 */
+.avatar-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+/* 头像徽章样式 */
+.avatar-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: #4CAF50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.avatar-badge:hover {
+    background: #388E3C;
+}
+
+/* 文件上传进度条 */
+.avatar-upload-progress {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: #4CAF50;
+    transition: width 0.3s;
+}
+/* 头像悬浮效果 */
+.user-avatar {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+.user-avatar:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+/* 文件上传样式 */
+#avatarUpload {
+    display: none;
+}

@@ -1,0 +1,92 @@
+@charset "UTF-8";
+/* user-info.css */
+.user-info-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.profile-header {
+    padding: 2rem 1.5rem;
+    border-radius: 0 0 25px 25px;
+}
+
+.avatar-edit-section {
+    display: flex;
+    justify-content: center;
+}
+
+.avatar-preview {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.avatar-preview:hover {
+    transform: scale(1.05);
+}
+
+.camera-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: rgba(0,0,0,0.5);
+    padding: 5px;
+    border-radius: 50%;
+    color: white;
+}
+
+.info-form {
+    background: white;
+    margin: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: #666;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.password-group input {
+    margin-bottom: 0.8rem;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.save-btn {
+    background: #4CAF50;
+    color: white;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.save-btn:hover {
+    opacity: 0.9;
+}
+
+
